@@ -69,7 +69,7 @@ local.properties
 .settings/
 .loadpath
 .factorypath
-/src/main/resources/rebel.xml
+/web/src/main/resources/rebel.xml
 
 # External tool builders
 .externalToolBuilders/**
