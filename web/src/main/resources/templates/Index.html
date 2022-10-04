@@ -1,23 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'home')}">
 <head>
-  <meta charset="UTF-8"/>
-  <title>Pet Clinic Index</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
-    <script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
-    <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <meta charset="UTF-8"/>
+    <title>Pet Clinic Index</title>
 </head>
 <body>
-<!--<h2 th:text="#{welcome}">Welcome</h2>-->
+<h2 th:text="#{welcome}">Welcome</h2>
 
 <div class="row">
-  <div class="col-md-12">
-<!--    <img class="img-responsive" src="../static/resources/images/pets.png" th:src="@{/resources/images/pets.png}"/>-->
-    <p class="btn">This is p</p>
-    <p>This is p</p>
-    <p>This is p</p>
-    <p>This is p</p>
-  </div>
+    <div class="col-md-12">
+        <img class="img-responsive" src="../static/resources/images/pets.png" th:src="@{/resources/images/pets.png}"/>
+    </div>
 </div>
 
 </body>
