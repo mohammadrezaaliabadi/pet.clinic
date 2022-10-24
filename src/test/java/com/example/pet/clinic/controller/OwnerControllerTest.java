@@ -27,22 +27,28 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 @ExtendWith(MockitoExtension.class)
 class OwnerControllerTest {
+
     @Mock
     OwnerService ownerService;
 
     @InjectMocks
     OwnerController controller;
+
     Set<Owner> owners;
 
     MockMvc mockMvc;
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
         owners = new HashSet<>();
         owners.add(Owner.builder().id(1l).build());
         owners.add(Owner.builder().id(2l).build());
-        mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
+
+        mockMvc = MockMvcBuilders
+                .standaloneSetup(controller)
+                .build();
     }
+
     @Test
     void findOwners() throws Exception {
         mockMvc.perform(get("/owners/find"))
@@ -88,7 +94,7 @@ class OwnerControllerTest {
     }
 
     @Test
-    void showOwner() throws Exception {
+    void displayOwner() throws Exception {
         when(ownerService.findById(anyLong())).thenReturn(Owner.builder().id(1l).build());
 
         mockMvc.perform(get("/owners/123"))
@@ -96,6 +102,7 @@ class OwnerControllerTest {
                 .andExpect(view().name("owners/ownerDetails"))
                 .andExpect(model().attribute("owner", hasProperty("id", is(1l))));
     }
+
 
     @Test
     void initCreationForm() throws Exception {
@@ -128,7 +135,7 @@ class OwnerControllerTest {
                 .andExpect(view().name("owners/createOrUpdateOwnerForm"))
                 .andExpect(model().attributeExists("owner"));
 
-        verify(ownerService).findById(any());
+        verifyNoInteractions(ownerService);
     }
 
     @Test
